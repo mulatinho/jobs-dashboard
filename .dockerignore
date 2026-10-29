@@ -1,0 +1,13 @@
+.git
+.github
+.editorconfig
+.gitignore
+.dockerignore
+bin
+coverage.out
+coverage.html
+*_test.go
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+CHANGELOG.md

@@ -1,0 +1,29 @@
+name: Pull request checks
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Check formatting, vet, tests, and module integrity
+        run: make check
+
+      - name: Run tests with race detector
+        run: make race
+
+      - name: Build binary
+        run: make build

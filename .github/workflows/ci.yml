@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Verify, format, vet, and test
+        run: make check
+
+      - name: Test with race detector
+        run: make race
+
+      - name: Build binary
+        run: make build
