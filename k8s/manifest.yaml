@@ -117,7 +117,7 @@ spec:
       - envFrom:
         - configMapRef:
             name: jobs-dashboard-config
-        image: ghcr.io/your-org/jobs-dashboard:latest
+        image: mulatinho/jobs-dashboard:latest
         imagePullPolicy: Always
         name: dashboard
         ports:
